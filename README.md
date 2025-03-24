@@ -31,14 +31,107 @@ A funcionalidade implementada é o **Cadastro de Produtos**, onde os dados são 
 ## 📘 Diagrama de Classes
 
 <!-- Substitua o link abaixo com a imagem do seu diagrama de classes -->
-![Diagrama de Classes](docs/diagrama-classes.png)
+### Astah
+
+![C - Cadastro de Produto](https://github.com/user-attachments/assets/77ddad27-aee2-4f98-b3a3-3528bd820579)
+
+---
+
+### PlantUML
+
+![image](https://github.com/user-attachments/assets/e2b13764-f51f-48b6-8bcb-5e8176e3a898)
+
+---
+
+#### PlantUML – code
+
+```plantuml
+@startuml
+title Diagrama de Classes - Cadastro de Produto
+
+class Produto {
+    - nome: String
+    - preco: double
+    - quantidade: int
+    --
+    + Produto(nome: String, preco: double, quantidade: int)
+    + getNome(): String
+    + setNome(nome: String): void
+    + getPreco(): double
+    + setPreco(preco: double): void
+    + getQuantidade(): int
+    + setQuantidade(qtd: int): void
+}
+
+class ProdutoRepository {
+    - FILE_NAME: String = "produtos.csv"
+    --
+    + salvar(produto: Produto): void
+    + carregarTodos(): List<Produto>
+}
+
+class ProdutoForm {
+    - nomeField: JTextField
+    - precoField: JTextField
+    - quantidadeField: JTextField
+    - cadastrarButton: JButton
+    - repository: ProdutoRepository
+    --
+    + ProdutoForm()
+    - limparCampos(): void
+}
+
+ProdutoForm --> ProdutoRepository : usa
+ProdutoRepository --> Produto : manipula
+@enduml
+```
 
 ---
 
 ## 🔄 Diagrama de Sequência
 
 <!-- Substitua o link abaixo com a imagem do seu diagrama de sequência -->
-![Diagrama de Sequência](docs/diagrama-sequencia.png)
+### Astah
+
+![DS - Cadastro de Produto](https://github.com/user-attachments/assets/4cd7a905-574e-483d-85d8-ca076026c51f)
+
+---
+
+### PlantUML
+
+![image](https://github.com/user-attachments/assets/687dad68-2687-40fd-a1ac-9112088cc1a1)
+
+---
+
+#### PlantUML – code
+
+```plantuml
+@startuml
+title Diagrama de Sequência - Cadastro de Produto
+
+actor Usuario
+
+boundary ProdutoForm
+control ProdutoRepository
+entity Produto
+
+== Início do Cadastro ==
+
+Usuario -> ProdutoForm : preencherCampos()
+Usuario -> ProdutoForm : clicarEmCadastrar()
+
+ProdutoForm -> Produto : new Produto(nome, preco, quantidade)
+
+ProdutoForm -> ProdutoRepository : salvar(produto)
+
+ProdutoRepository -> "Arquivo CSV" : escreverLinha(produto)
+
+ProdutoRepository --> ProdutoForm : retorno (void)
+
+ProdutoForm -> Usuario : mostrarMensagem("Produto cadastrado com sucesso!")
+
+@enduml
+```
 
 ---
 
