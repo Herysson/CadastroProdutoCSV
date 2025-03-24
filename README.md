@@ -24,8 +24,6 @@ A funcionalidade implementada é o **Cadastro de Produtos**, onde os dados são 
 - `ProdutoRepository`: responsável por salvar e carregar os dados do arquivo CSV
 - `ProdutoForm`: interface gráfica para entrada dos dados
 
-> 💡 Opcionalmente, pode-se adicionar uma camada de serviço (`ProdutoService`) para centralizar regras de negócio.
-
 ---
 
 ## 📘 Diagrama de Classes
@@ -164,16 +162,47 @@ ProdutoForm -> Usuario : mostrarMensagem("Produto cadastrado com sucesso!")
 ## 📂 Organização dos Arquivos
 
 ```
-├── Produto.java
-├── ProdutoRepository.java
-├── ProdutoForm.java
-├── produtos.csv
-└── docs
-    ├── diagrama-classes.png
-    └── diagrama-sequencia.png
+CadastroProdutoCSV/
+├── Projeto/
+│   ├── src/
+│   │   └── main/
+│   │       └── java/
+│   │           └── com/
+│   │               └── mycompany/
+│   │                   └── cadastroproduto/
+│   │                       ├── Produto.java
+│   │                       ├── ProdutoForm.java
+│   │                       └── ProdutoRepository.java
+│   └── produtos.csv
+├── LICENSE
+└── README.md
 ```
 
 ---
+
+### 🗂️ Descrição dos Diretórios e Arquivos
+
+- **`Produto.java`**: Classe que representa o modelo de dados.
+- **`ProdutoForm.java`**: Interface gráfica (Swing) para entrada de dados.
+- **`ProdutoRepository.java`**: Responsável por salvar e carregar produtos do arquivo CSV.
+- **`produtos.csv`**: Arquivo onde os dados são persistidos.
+- **`LICENSE`**: Arquivo de licença MIT.
+- **`README.md`**: Este arquivo com instruções e explicações do projeto.
+
+---
+
+## 🧩 Desafio
+
+Como exercício complementar, **projete e implemente as demais funcionalidades do CRUD (Create, Read, Update, Delete)** para produtos:
+
+- 📖 **Listar Produtos**: Leia e exiba todos os produtos cadastrados no CSV.
+- ✏️ **Atualizar Produto**: Permita alterar as informações de um produto existente.
+- ❌ **Excluir Produto**: Implemente uma forma de apagar um produto do CSV.
+
+> 💡 Lembre-se de adaptar o repositório e a interface gráfica para essas operações, sempre mantendo a separação entre lógica de apresentação e acesso a dados.
+
+---
+
 
 ## 📄 Licença
 
@@ -181,9 +210,14 @@ Este projeto está licenciado sob os termos da licença MIT.
 Consulte o arquivo [LICENSE](LICENSE) para mais informações.
 
 ---
+---
 
-## 📸 Créditos
+## 👤 Autor
 
-Professor Herysson – Projeto de Software  
-Universidade Franciscana – Curso de Ciência da Computação
+**Prof. Herysson R. Figueredo**  
+Curso de Ciência da Computação – Universidade Franciscana (UFN)
+
+📧 E-mail: herysson.figueiredo@ufn.edu.br  
+🔗 GitHub: [@Herysson](https://github.com/Herysson)  
+
 
